@@ -36,7 +36,6 @@ class WebService {
             } else {
                 completion(.failure(.decodingError))
             }
-
             
         }.resume()
     }
