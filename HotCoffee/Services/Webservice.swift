@@ -13,11 +13,24 @@ enum NetworkError: Error {
     case urlError
 }
 
-struct Resource<T: Codable> {
-    let url: URL
+enum HttpMethod: String {
+    case get = "GET"
+    case post = "POST"
 }
 
-class WebService {
+struct Resource<T: Codable> {
+    let url: URL
+    var httpMethod: HttpMethod = .get
+    var body: Data? = nil
+}
+
+extension Resource {
+    init(url: URL) {
+        self.url = url
+    }
+}
+
+class Webservice {
     
     func load<T>(resource: Resource<T>, completion: @escaping (Result<T, NetworkError>) -> Void) {
         
@@ -29,6 +42,7 @@ class WebService {
             }
             
             let result = try? JSONDecoder().decode(T.self, from: data)
+            
             if let result = result {
                 DispatchQueue.main.async {
                     completion(.success(result))
@@ -38,5 +52,7 @@ class WebService {
             }
             
         }.resume()
+        
     }
+    
 }

@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Jkl-hY-FgO">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CoffeeTypeTableViewCell" id="Jkl-hY-FgO">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jkl-hY-FgO" id="ufO-nZ-nx9">
@@ -65,14 +65,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U2p-9R-q2i">
-                                <rect key="frame" x="104" y="565" width="206" height="32"/>
-                                <segments>
-                                    <segment title="Small"/>
-                                    <segment title="Medium"/>
-                                    <segment title="Large"/>
-                                </segments>
-                            </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEq-As-RyC">
                                 <rect key="frame" x="107" y="646" width="200" height="34"/>
                                 <constraints>
@@ -95,11 +87,9 @@
                         <constraints>
                             <constraint firstItem="bMW-mR-KUK" firstAttribute="width" secondItem="Kis-12-VfP" secondAttribute="width" id="76K-Fy-F9h"/>
                             <constraint firstItem="GEq-As-RyC" firstAttribute="centerX" secondItem="Kis-12-VfP" secondAttribute="centerX" id="AEC-WK-Qec"/>
+                            <constraint firstItem="CF0-xa-RRG" firstAttribute="bottom" secondItem="IRq-Pg-iw1" secondAttribute="bottom" constant="128" id="EmL-xV-YBF"/>
                             <constraint firstItem="bMW-mR-KUK" firstAttribute="height" secondItem="Kis-12-VfP" secondAttribute="height" multiplier="0.5" id="FMv-vZ-IuI"/>
-                            <constraint firstItem="U2p-9R-q2i" firstAttribute="centerX" secondItem="Kis-12-VfP" secondAttribute="centerX" id="GTZ-Wf-BY3"/>
-                            <constraint firstItem="GEq-As-RyC" firstAttribute="top" secondItem="U2p-9R-q2i" secondAttribute="bottom" constant="50" id="NrC-hh-BKi"/>
                             <constraint firstItem="bMW-mR-KUK" firstAttribute="top" secondItem="CF0-xa-RRG" secondAttribute="top" id="WkP-OM-N7E"/>
-                            <constraint firstItem="U2p-9R-q2i" firstAttribute="top" secondItem="bMW-mR-KUK" secondAttribute="bottom" constant="29" id="dde-t1-Ace"/>
                             <constraint firstItem="bMW-mR-KUK" firstAttribute="leading" secondItem="CF0-xa-RRG" secondAttribute="leading" id="fVe-7s-7oh"/>
                             <constraint firstItem="IRq-Pg-iw1" firstAttribute="top" secondItem="GEq-As-RyC" secondAttribute="bottom" constant="20" id="hIJ-aY-hO3"/>
                             <constraint firstItem="IRq-Pg-iw1" firstAttribute="centerX" secondItem="Kis-12-VfP" secondAttribute="centerX" id="v0Z-7p-JNi"/>
@@ -107,8 +97,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add New Order" id="xKY-gr-a1E">
                         <barButtonItem key="leftBarButtonItem" title="Close" style="done" id="2qU-Os-rdF"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="FIQ-sr-EnW"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="FIQ-sr-EnW">
+                            <connections>
+                                <action selector="save" destination="9Ut-E1-MiN" id="C99-Hy-25f"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="IRq-Pg-iw1" id="tWe-Ge-dz6"/>
+                        <outlet property="nameTextField" destination="GEq-As-RyC" id="Mhn-aI-iAC"/>
+                        <outlet property="tableView" destination="bMW-mR-KUK" id="Zrd-8m-fC8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6FQ-Ae-jxN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
